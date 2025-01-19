@@ -2,12 +2,20 @@ const express = require('express');
 const router = express.Router();
 
 const { routers } = require('../../constant');
-const { getHealthCheck, authServices } = require('../../controllers');
+const { healthServices, authServices, categoryServices } = require('../../controllers');
 
-router.get(routers.allRouters.healthCheck, getHealthCheck);
+// health check
+router.get(routers.allRouters.healthCheck, healthServices.getHealthCheck);
+
+// register, login and related to user profile
 router.post(routers.allRouters.register, authServices.userRegistration);
 router.post(routers.allRouters.login, authServices.userLogin);
 router.get(routers.allRouters.profile, authServices.userProfile);
+
+// catagories
+router.post(routers.allRouters.newCategory, categoryServices.createCategory);
+router.get(routers.allRouters.listCategory, categoryServices.listCategories);
+router.get(routers.allRouters.categoryItem, categoryServices.getCategory);
 
 module.exports = {
   v1Routes: router,

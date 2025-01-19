@@ -2,9 +2,9 @@ const { StatusCodes } = require('http-status-codes');
 const jwt = require('jsonwebtoken');
 
 const User = require('../models/user.model');
+const { envConfig } = require('../config');
 const { msg } = require('../constant');
 const { authValidate } = require('../validation');
-const { envConfig } = require('../config');
 
 /* user registration */
 const userRegistration = async (req, res) => {
@@ -163,7 +163,7 @@ const userProfile = async (req, res) => {
     }
 
     /* retrieve the user based on the decoded token's user ID */
-    const user = await User.findById(decoded.userid);
+    const user = await User.findById(decoded.userid).select('-password');;
     if (!user) {
       return res.status(StatusCodes.NOT_FOUND).json({
         status: StatusCodes.NOT_FOUND,
@@ -171,22 +171,9 @@ const userProfile = async (req, res) => {
       });
     }
 
-    /* return the user profile excluding password */
-    const userProfile = {
-      fullname: `${user.firstname} ${user.lastname}`,
-      email: user.email,
-      role: user.role,
-      firstname: user.firstname,
-      lastname: user.lastname,
-      phone: user.phone,
-      verified: user.verified,
-      createdAt: user.createdAt,
-      updatedAt: user.updatedAt,
-    };
-
     return res.status(StatusCodes.OK).json({
       status: StatusCodes.OK,
-      data: userProfile,
+      data: user,
     });
   } catch (error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({

@@ -6,9 +6,13 @@ const allRouters = {
 
   register: '/register',
   login: '/login',
-  profile: '/me',
+  profile: '/profile/me',
   updateProfile: '/update-me',
   updatePassword: '/update-password',
+
+  newCategory: '/new-category',
+  listCategory: '/list-categories',
+  categoryItem: '/category/:id',
 };
 
 module.exports = {
