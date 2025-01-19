@@ -48,10 +48,19 @@ const userMsg = {
   expireUserToken: 'The token is expired or invalid.',
 };
 
+const categoryMsg = {
+  requireCategoryName: 'Category name should not be blank.',
+  maxName: 'Category name should not be more than 60 characters.',
+  requireDescription: 'Category description should not be blank.',
+  maxDescription: 'Category description should not be more than 255 characters.',
+  newCategoryCreated: 'New category created successfully.',
+}
+
 module.exports = {
   server,
   dbMsg,
   appMsg,
   healthCheck,
   userMsg,
+  categoryMsg,
 };
