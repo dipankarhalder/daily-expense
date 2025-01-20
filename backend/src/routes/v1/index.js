@@ -10,7 +10,8 @@ router.get(routers.allRouters.healthCheck, healthServices.getHealthCheck);
 // register, login and related to user profile
 router.post(routers.allRouters.register, authServices.userRegistration);
 router.post(routers.allRouters.login, authServices.userLogin);
-router.get(routers.allRouters.profile, authServices.userProfile);
+router.get(routers.allRouters.getProfile, authServices.userProfile);
+router.patch(routers.allRouters.updatePassword, authServices.updatePassword);
 
 // catagories
 router.post(routers.allRouters.newCategory, categoryServices.createCategory);
