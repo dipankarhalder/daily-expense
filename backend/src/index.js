@@ -29,7 +29,9 @@ app.use((req, res, next) => {
 
 /* application global errors handled using middleware */
 app.use((error, req, res) => {
-  res.status(error.status || StatusCodes.INTERNAL_SERVER_ERROR);
+  res.status(
+    error.status || StatusCodes.INTERNAL_SERVER_ERROR,
+  );
   res.json({
     error: {
       message: error.message,
@@ -42,7 +44,9 @@ dbConfig
   .dbConnect()
   .then(() => {
     app.listen(envConfig.PORT, () => {
-      console.log(`${msg.server.serveSuccess} ${envConfig.PORT}`);
+      console.log(
+        `${msg.server.serveSuccess} ${envConfig.PORT}`,
+      );
     });
   })
   .catch((err) => {
