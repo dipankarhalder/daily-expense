@@ -1,6 +1,7 @@
 const { StatusCodes } = require('http-status-codes');
 
 const { msg } = require('../constant');
+const { sendErrorResponse } = require('../utils');
 
 const getHealthCheck = async (req, res) => {
   try {
@@ -9,11 +10,7 @@ const getHealthCheck = async (req, res) => {
       msg: msg.healthCheck.successMsg,
     });
   } catch (error) {
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      status: StatusCodes.INTERNAL_SERVER_ERROR,
-      msg: msg.appMsg.somethingWrong,
-      error: error.message,
-    });
+    return sendErrorResponse(res, error);
   }
 };
 
