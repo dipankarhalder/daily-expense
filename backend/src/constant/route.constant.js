@@ -4,14 +4,14 @@ const allRouters = {
 
   healthCheck: '/health-check',
 
-  register: '/register',
-  login: '/login',
-  profile: '/profile/me',
-  updateProfile: '/update-me',
-  updatePassword: '/update-password',
+  register: '/auth/register',
+  login: '/auth/login',
+  getProfile: '/profile/me',
+  updateProfile: '/profile/update-me',
+  updatePassword: '/profile/update-password',
 
-  newCategory: '/new-category',
-  listCategory: '/list-categories',
+  newCategory: '/category/new',
+  listCategory: '/category/list',
   categoryItem: '/category/:id',
 };
 

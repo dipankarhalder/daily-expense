@@ -13,11 +13,6 @@ const CategorySchema = new Schema(
       required: true,
       maxlength: 255,
     },
-    // category: {
-    //   type: String,
-    //   enum: ['Food', 'Transportation', 'Entertainment', 'Utilities', 'Miscellaneous'],
-    //   required: true,
-    // },
     user: {
       type: Object,
       required: true,

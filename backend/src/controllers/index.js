@@ -3,6 +3,7 @@ const {
   userRegistration,
   userLogin,
   userProfile,
+  updatePassword,
 } = require('./auth.controller');
 const { createCategory, getCategory, listCategories } = require('./category.controller');
 
@@ -14,6 +15,7 @@ module.exports = {
     userRegistration,
     userLogin,
     userProfile,
+    updatePassword,
   },
   categoryServices: {
     createCategory,
