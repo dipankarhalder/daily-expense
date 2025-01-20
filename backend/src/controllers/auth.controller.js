@@ -8,6 +8,7 @@ const {
   verifyToken,
   validateFields,
   sendErrorResponse,
+  notFoundItem,
 } = require('../utils');
 
 /* user registration */
@@ -150,10 +151,7 @@ const userProfile = async (req, res) => {
       '-password',
     );
     if (!user) {
-      return res.status(StatusCodes.NOT_FOUND).json({
-        status: StatusCodes.NOT_FOUND,
-        message: msg.userMsg.userNotFound,
-      });
+      return notFoundItem(res, msg.userMsg.userNotFound);
     }
 
     return res.status(StatusCodes.OK).json({

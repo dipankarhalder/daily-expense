@@ -9,6 +9,7 @@ const {
   createCategory,
   getCategory,
   listCategories,
+  deleteCategory,
 } = require('./category.controller');
 
 module.exports = {
@@ -25,5 +26,6 @@ module.exports = {
     createCategory,
     listCategories,
     getCategory,
+    deleteCategory,
   },
 };
