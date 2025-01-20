@@ -21,6 +21,13 @@ const validateFields = (res, messages) => {
   });
 };
 
+const notFoundItem = (res, messages) => {
+  return res.status(StatusCodes.NOT_FOUND).json({
+    status: StatusCodes.NOT_FOUND,
+    message: messages,
+  });
+}
+
 const verifyToken = (req, res) => {
   try {
     const token = req.cookies.authToken;
@@ -52,4 +59,5 @@ module.exports = {
   sendErrorResponse,
   verifyToken,
   validateFields,
+  notFoundItem,
 };

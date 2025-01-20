@@ -8,6 +8,7 @@ const {
   verifyToken,
   validateFields,
   sendErrorResponse,
+  notFoundItem,
 } = require('../utils');
 
 /* create category */
@@ -16,17 +17,10 @@ const createCategory = async (req, res) => {
     const decoded = await verifyToken(req, res);
     if (!decoded) return;
 
-    const user = await User.findById(decoded.userid).select(
-      '-password',
-    );
-
-    /* validate the request body using joi */
     const { error, value } =
       categoryValidate.categoryInfoSchema.validate(
         req.body,
-        {
-          abortEarly: false,
-        },
+        { abortEarly: false, },
       );
     if (error) {
       return validateFields(
@@ -37,15 +31,27 @@ const createCategory = async (req, res) => {
       );
     }
 
-    /* get category info from request body */
     const { categoryName, description } = value;
+    const existingCategory = await Category.findOne({ categoryName });
+    if (existingCategory) {
+      return validateFields(
+        res,
+        msg.categoryMsg.categoryAlreadyExist,
+      );
+    }
+
+    const user = await User.findById(decoded.userid).select(
+      '-password',
+    );
+
+    /* get category info from request body */
     const newCategory = new Category({
       categoryName,
       description,
       user,
     });
-    await newCategory.save();
 
+    await newCategory.save();
     return res.status(StatusCodes.OK).json({
       status: StatusCodes.OK,
       category: newCategory,
@@ -84,8 +90,29 @@ const getCategory = async (req, res) => {
   }
 };
 
+/* delete category */
+const deleteCategory = async (req, res) => {
+  try {
+    const categoryId = req.params.id;
+    const category = await Category.findById(categoryId);
+    if (!category) {
+      return notFoundItem(res, msg.categoryMsg.categoryNotFound);
+    }
+
+    // Delete the category
+    await Category.findByIdAndDelete(categoryId);
+    return res.status(StatusCodes.OK).json({
+      status: StatusCodes.OK,
+      message: msg.categoryMsg.categoryDeleted,
+    });
+  } catch (error) {
+    return sendErrorResponse(res, error);
+  }
+};
+
 module.exports = {
   createCategory,
   listCategories,
   getCategory,
+  deleteCategory,
 };
