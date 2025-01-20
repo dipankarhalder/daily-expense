@@ -65,7 +65,11 @@ const categoryMsg = {
     'Category description should not be blank.',
   maxDescription:
     'Category description should not be more than 255 characters.',
+  categoryAlreadyExist:
+    'Provided category is already exist.',
   newCategoryCreated: 'New category created successfully.',
+  categoryNotFound: 'The category is not found.',
+  categoryDeleted: "Category deleted successfully.",
 };
 
 module.exports = {

@@ -14,7 +14,7 @@ router.get(
   healthServices.getHealthCheck,
 );
 
-// register, login and related to user profile
+// authentication
 router.post(
   routers.allRouters.register,
   authServices.userRegistration,
@@ -23,6 +23,8 @@ router.post(
   routers.allRouters.login,
   authServices.userLogin,
 );
+
+// profile
 router.get(
   routers.allRouters.getProfile,
   authServices.userProfile,
@@ -44,6 +46,10 @@ router.get(
 router.get(
   routers.allRouters.categoryItem,
   categoryServices.getCategory,
+);
+router.delete(
+  routers.allRouters.categoryItem,
+  categoryServices.deleteCategory,
 );
 
 module.exports = {
