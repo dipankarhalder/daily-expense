@@ -2,7 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const { routers } = require('../../constant');
-const { healthServices, authServices, categoryServices } = require('../../controllers');
+const {
+  healthServices,
+  authServices,
+  categoryServices,
+} = require('../../controllers');
 
 // health check
 router.get(routers.allRouters.healthCheck, healthServices.getHealthCheck);
