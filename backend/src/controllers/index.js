@@ -5,7 +5,11 @@ const {
   userProfile,
   updatePassword,
 } = require('./auth.controller');
-const { createCategory, getCategory, listCategories } = require('./category.controller');
+const {
+  createCategory,
+  getCategory,
+  listCategories,
+} = require('./category.controller');
 
 module.exports = {
   healthServices: {
@@ -21,5 +25,5 @@ module.exports = {
     createCategory,
     listCategories,
     getCategory,
-  }
+  },
 };

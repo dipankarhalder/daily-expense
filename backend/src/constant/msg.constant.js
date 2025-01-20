@@ -52,9 +52,10 @@ const categoryMsg = {
   requireCategoryName: 'Category name should not be blank.',
   maxName: 'Category name should not be more than 60 characters.',
   requireDescription: 'Category description should not be blank.',
-  maxDescription: 'Category description should not be more than 255 characters.',
+  maxDescription:
+    'Category description should not be more than 255 characters.',
   newCategoryCreated: 'New category created successfully.',
-}
+};
 
 module.exports = {
   server,

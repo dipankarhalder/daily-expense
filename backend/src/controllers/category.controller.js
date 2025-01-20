@@ -31,9 +31,12 @@ const createCategory = async (req, res) => {
     const user = await User.findById(decoded.userid).select('-password');
 
     /* validate the request body using joi */
-    const { error, value } = categoryValidate.categoryInfoSchema.validate(req.body, {
-      abortEarly: false,
-    });
+    const { error, value } = categoryValidate.categoryInfoSchema.validate(
+      req.body,
+      {
+        abortEarly: false,
+      },
+    );
     if (error) {
       return res.status(StatusCodes.BAD_REQUEST).json({
         status: StatusCodes.BAD_REQUEST,

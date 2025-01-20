@@ -163,7 +163,7 @@ const userProfile = async (req, res) => {
     }
 
     /* retrieve the user based on the decoded token's user ID */
-    const user = await User.findById(decoded.userid).select('-password');;
+    const user = await User.findById(decoded.userid).select('-password');
     if (!user) {
       return res.status(StatusCodes.NOT_FOUND).json({
         status: StatusCodes.NOT_FOUND,
