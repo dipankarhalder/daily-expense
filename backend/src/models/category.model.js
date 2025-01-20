@@ -18,7 +18,7 @@ const CategorySchema = new Schema(
       required: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 module.exports = mongoose.model('Category', CategorySchema);

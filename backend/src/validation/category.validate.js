@@ -13,5 +13,5 @@ const categoryInfoSchema = Joi.object({
 });
 
 module.exports = {
-  categoryInfoSchema
+  categoryInfoSchema,
 };
