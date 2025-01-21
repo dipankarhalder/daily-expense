@@ -43,8 +43,6 @@ const createCategory = async (req, res) => {
     const user = await User.findById(decoded.userid).select(
       '-password',
     );
-
-    /* get category info from request body */
     const newCategory = new Category({
       categoryName,
       description,
@@ -83,7 +81,7 @@ const getCategory = async (req, res) => {
       await Category.findById(categoryId);
     return res.status(StatusCodes.OK).json({
       status: StatusCodes.OK,
-      list: categoryDetails,
+      details: categoryDetails,
     });
   } catch (error) {
     return sendErrorResponse(res, error);
@@ -98,8 +96,6 @@ const deleteCategory = async (req, res) => {
     if (!category) {
       return notFoundItem(res, msg.categoryMsg.categoryNotFound);
     }
-
-    // Delete the category
     await Category.findByIdAndDelete(categoryId);
     return res.status(StatusCodes.OK).json({
       status: StatusCodes.OK,

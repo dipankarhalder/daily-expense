@@ -6,6 +6,7 @@ const {
   healthServices,
   authServices,
   categoryServices,
+  paymentServices,
 } = require('../../controllers');
 
 // health check
@@ -51,6 +52,25 @@ router.delete(
   routers.allRouters.categoryItem,
   categoryServices.deleteCategory,
 );
+
+// payments
+router.post(
+  routers.allRouters.newPayment,
+  paymentServices.createPayment,
+);
+router.get(
+  routers.allRouters.listPayment,
+  paymentServices.listPayments,
+);
+router.get(
+  routers.allRouters.paymentItem,
+  paymentServices.getPayment,
+);
+router.delete(
+  routers.allRouters.paymentItem,
+  paymentServices.deletePayment,
+);
+
 
 module.exports = {
   v1Routes: router,

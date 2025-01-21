@@ -72,6 +72,15 @@ const categoryMsg = {
   categoryDeleted: "Category deleted successfully.",
 };
 
+const paymentMsg = {
+  requirePaymentName: 'Payment type should not be blank.',
+  payTypeAlreadyExist:
+    'Provided payment type is already exist.',
+  newPaymentCreated: 'New payment type created successfully.',
+  paymentNotFound: 'The payment type is not found.',
+  paymentDeleted: "Payment type deleted successfully.",
+};
+
 module.exports = {
   server,
   dbMsg,
@@ -79,4 +88,5 @@ module.exports = {
   healthCheck,
   userMsg,
   categoryMsg,
+  paymentMsg,
 };

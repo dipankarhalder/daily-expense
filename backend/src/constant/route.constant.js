@@ -13,6 +13,10 @@ const allRouters = {
   newCategory: '/category/new',
   listCategory: '/category/list',
   categoryItem: '/category/:id',
+
+  newPayment: '/payment/new',
+  listPayment: '/payment/list',
+  paymentItem: '/payment/:id',
 };
 
 module.exports = {
