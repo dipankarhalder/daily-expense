@@ -11,6 +11,12 @@ const {
   listCategories,
   deleteCategory,
 } = require('./category.controller');
+const {
+  createPayment,
+  listPayments,
+  getPayment,
+  deletePayment,
+} = require('./payment.controller');
 
 module.exports = {
   healthServices: {
@@ -28,4 +34,10 @@ module.exports = {
     getCategory,
     deleteCategory,
   },
+  paymentServices: {
+    createPayment,
+    listPayments,
+    getPayment,
+    deletePayment,
+  }
 };
